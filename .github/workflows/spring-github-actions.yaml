@@ -1,0 +1,32 @@
+name: CI/CD with GithubAction
+on:
+  push:
+    branches: [ master ]
+    pull_request: [ master ]
+
+jobs:
+  build:
+    run-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+      - name: compile project
+        run:
+          - echo "compiling the project"
+          - mvn compile
+      - name: test the project
+        run:
+          - echo "compile stage"
+          - mvn test
+      - name: build the project
+        run:
+          - echo "build stage"
+          - mvn install
+      - name: deploy the project
+        run:
+          - echo "successfully deployed"
