@@ -23,7 +23,7 @@ jobs:
       - name: deploy the project
         run: echo "successfully deployed"
       - name: docker build and push
-        uses: mr-smithers-excellent/docker-build-push@v4
+        uses: mr-smithers-excellent/docker-build-push@v6
         with:
           image: malonicester/spring-boot-github-actions
           tags: v1, latest
