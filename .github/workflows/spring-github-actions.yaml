@@ -7,7 +7,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v3
       - name: Set up JDK 17
@@ -23,3 +22,16 @@ jobs:
         run: mvn install
       - name: deploy the project
         run: echo "successfully deployed"
+      - name: docker build and push
+        uses: mr-smithers-excellent/docker-build-push@v6
+        with:
+          image: malonicester/spring-boot-github-actions
+          tags: v1, latest
+          registry: docker.io
+          dockerfile: Dockerfile
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+#1.Login to docker
+#2. Build a docker image
+#3. Push the image to docker hub

@@ -55,6 +55,7 @@
 				</configuration>
 			</plugin>
 		</plugins>
+		<finalName>Spring_github_actions</finalName>
 	</build>
 
 </project>
